@@ -1,0 +1,116 @@
+{
+  "workflowApiVersion": "1.1",
+  "metaData": {
+    "icon": "https://image.email.gtx.global/lib/fe3911717164047f771478/m/1/4af1ad11-2550-42a3-ab34-0b9520beb985.png",
+    "iconSmall": "https://image.email.gtx.global/lib/fe3911717164047f771478/m/1/03d1e965-6fa8-41fa-8f34-7561bf35a89e.png",
+    "category": "message"
+  },
+  "type": "REST",
+  "lang": {
+    "en-US": {
+      "name": "Spypoint PUSH",
+      "description": "Notification activity supporting rich messages (Inbox, In-App, Push) and custom landing URL."
+    },
+    "fr-FR": {
+      "name": "Spypoint PUSH",
+      "description": "Activité de notification personnalisée supportant Inbox, In-App, Push, et URL personnalisée."
+    }
+  },
+  "arguments": {
+    "execute": {
+      "url": "https://api.spypoint.com/notifications/execute",
+      "timeout": 10000,
+      "inArguments": [
+        { "subscriberKey": "{{Contact.Key}}" },
+        { "email": "{{Contact.Attribute.Profile.Email}}" },
+        { "firstName": "{{Contact.Attribute.Profile.FirstName}}" },
+        { "lastName": "{{Contact.Attribute.Profile.LastName}}" },
+        { "preferredLanguage": "{{Contact.Attribute.Profile.Language}}" },
+
+        { "title": "{{Activity.Title}}" },
+        { "subtitle": "{{Activity.Subtitle}}" },
+        { "body": "{{Activity.Body}}" },
+
+        { "ctaLabel": "{{Activity.CTALabel}}" },
+        { "ctaUrl": "{{Activity.CTAUrl}}" },
+        { "ctaLabel2": "{{Activity.CTALabel2}}" },
+        { "ctaUrl2": "{{Activity.CTAUrl2}}" },
+
+        { "imageUrl": "{{Activity.ImageUrl}}" },
+        { "themeColor": "{{Activity.ThemeColor}}" },
+        { "expirationDate": "{{Activity.ExpirationDate}}" },
+        { "customPageUrl": "{{Activity.CustomPageUrl}}" },
+
+        { "campaignId": "{{Context.DefinitionId}}" },
+        { "journeyId": "{{Context.JourneyId}}" },
+        { "activityId": "{{Context.ActivityId}}" },
+        { "sendTime": "{{Context.ScheduledDateTime}}" },
+
+        { "membershipLevel": "{{Contact.Attribute.Profile.Membership}}" },
+        { "deviceType": "{{Contact.Attribute.Device.Type}}" },
+
+        { "messageType": "{{Activity.MessageType}}" },
+        { "campaignName": "{{Activity.CampaignName}}" }
+      ]
+    }
+  },
+  "configurationArguments": {
+    "save": {
+      "url": "https://api.spypoint.com/notifications/save"
+    },
+    "publish": {
+      "url": "https://api.spypoint.com/notifications/publish"
+    },
+    "validate": {
+      "url": "https://api.spypoint.com/notifications/validate"
+    }
+  },
+  "views": {
+    "configModal": {
+      "url": "https://cloud.comm.spypoint.com/CustomActivityInterface",
+      "height": 600,
+      "width": 800,
+      "fullscreen": true
+    },
+    "summary": {
+      "url": "https://cloud.comm.spypoint.com/CustomActivitySummary",
+      "height": 280,
+      "width": 640
+    }
+  },
+  "wizardSteps": [
+    {
+      "label": "Contenu",
+      "key": "content",
+      "active": true
+    },
+    {
+      "label": "Audience",
+      "key": "audience",
+      "active": true
+    },
+    {
+      "label": "Options avancées",
+      "key": "advanced",
+      "active": true
+    }
+  ],
+  "edit": {
+    "undoLastSave": true,
+    "redoLastSave": true
+  },
+  "runningModal": {
+    "url": "https://cloud.comm.spypoint.com/CustomActivityRunningModal",
+    "height": 300,
+    "width": 600
+  },
+  "runningHover": {
+    "url": "https://cloud.comm.spypoint.com/CustomActivityHover",
+    "height": 180,
+    "width": 400
+  },
+  "outcomes": [
+    { "arguments": { "branchResult": "Success" }, "metaData": { "label": "Succès" } },
+    { "arguments": { "branchResult": "Failure" }, "metaData": { "label": "Erreur" } }
+  ]
+}
