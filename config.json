@@ -1,8 +1,16 @@
+
+<script runat="server">
+Platform.Response.ContentType = "application/json";
+</script>
+
+
+
+
 {
   "workflowApiVersion": "1.1",
   "metaData": {
-    "icon": "https://image.email.gtx.global/lib/fe3911717164047f771478/m/1/4af1ad11-2550-42a3-ab34-0b9520beb985.png",
-    "iconSmall": "https://image.email.gtx.global/lib/fe3911717164047f771478/m/1/03d1e965-6fa8-41fa-8f34-7561bf35a89e.png",
+    "icon": "https://image.email.gtx.global/lib/fe3911717164047f771478/m/1/47dba43a-5c2b-4d0d-809d-dcb90b703df1.png",
+    "iconSmall": "https://image.email.gtx.global/lib/fe3911717164047f771478/m/1/47dba43a-5c2b-4d0d-809d-dcb90b703df1.png",
     "category": "message"
   },
   "type": "REST",
@@ -18,10 +26,11 @@
   },
   "arguments": {
     "execute": {
-      "url": "https://api.spypoint.com/notifications/execute",
+      "url": "https://spypointinappsfmc.free.beeceptor.com",
       "timeout": 10000,
       "inArguments": [
         { "subscriberKey": "{{Contact.Key}}" },
+        { "UserId": "{{Contact.UserId}}" },
         { "email": "{{Contact.Attribute.Profile.Email}}" },
         { "firstName": "{{Contact.Attribute.Profile.FirstName}}" },
         { "lastName": "{{Contact.Attribute.Profile.LastName}}" },
@@ -56,13 +65,13 @@
   },
   "configurationArguments": {
     "save": {
-      "url": "https://api.spypoint.com/notifications/save"
+      "url": "https://spypointinappsfmc.free.beeceptor.com"
     },
     "publish": {
-      "url": "https://api.spypoint.com/notifications/publish"
+      "url": "https://spypointinappsfmc.free.beeceptor.com"
     },
     "validate": {
-      "url": "https://api.spypoint.com/notifications/validate"
+      "url": "https://spypointinappsfmc.free.beeceptor.com"
     }
   },
   "views": {
@@ -99,16 +108,7 @@
     "undoLastSave": true,
     "redoLastSave": true
   },
-  "runningModal": {
-    "url": "https://cloud.comm.spypoint.com/CustomActivityRunningModal",
-    "height": 300,
-    "width": 600
-  },
-  "runningHover": {
-    "url": "https://cloud.comm.spypoint.com/CustomActivityHover",
-    "height": 180,
-    "width": 400
-  },
+  
   "outcomes": [
     { "arguments": { "branchResult": "Success" }, "metaData": { "label": "Succès" } },
     { "arguments": { "branchResult": "Failure" }, "metaData": { "label": "Erreur" } }
